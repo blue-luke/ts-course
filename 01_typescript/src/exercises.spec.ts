@@ -22,9 +22,8 @@
 //
 // Let's get started!
 
-describe("What is typescript?", () => {
-
-  it("trivially passes", () => {
+describe('What is typescript?', () => {
+  it('trivially passes', () => {
     expect(1).toBe(1);
   });
 
@@ -35,13 +34,13 @@ describe("What is typescript?", () => {
     Uncomment the test below and make it pass.
   */
 
-  // it("is based on ordinary Javascript", () => {
-  //   function greetKay() {
-  //     // ...
-  //   }
-  //
-  //   expect(greetKay()).toEqual("Hello, Kay!");
-  // });
+  it('is based on ordinary Javascript', () => {
+    function greetKay() {
+      return 'Hello, Kay!';
+    }
+
+    expect(greetKay()).toEqual('Hello, Kay!');
+  });
 
   /*
     Typescript builds on JS.
