@@ -199,14 +199,26 @@ describe('What is typescript?', () => {
     Uncomment this test and make it pass.
   */
 
-  // it("adds type annotations 7", () => {
-  //   function flatten(lists: number[][]): number[] {
-  //     return lists.reduce((a, b) => [...a, ...b]);
-  //   }
-  //
-  //   expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
-  //   expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-  // });
+  it('adds type annotations 7', () => {
+    function flatten<T>(lists: T[][]): T[] {
+      return lists.reduce((a, b) => [...a, ...b]);
+    }
+
+    expect(
+      flatten([
+        [1, 2],
+        [3, 4],
+        [5, 6],
+      ])
+    ).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(
+      flatten([
+        ['a', 'b'],
+        ['c', 'd'],
+        ['e', 'f'],
+      ])
+    ).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  });
 
   /*
     Finally, we can also describe the types of classes and functions in
