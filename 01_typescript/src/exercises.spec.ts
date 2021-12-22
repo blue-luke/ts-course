@@ -76,13 +76,13 @@ describe('What is typescript?', () => {
     Uncomment the tests below and make them pass.
   */
 
-  // it("adds type annotations 1", () => {
-  //   function greet(name) {
-  //     // ...
-  //   }
-  //
-  //   expect(greet("Kay")).toEqual("Hello, Kay!");
-  // });
+  it('adds type annotations 1', () => {
+    function greet(name: string): string {
+      return `Hello, ${name}!`;
+    }
+
+    expect(greet('Kay')).toEqual('Hello, Kay!');
+  });
 
   // it("adds type annotations 2", () => {
   //   function power(num, exp) {
