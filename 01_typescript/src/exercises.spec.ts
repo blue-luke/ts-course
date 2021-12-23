@@ -252,6 +252,8 @@ describe('What is typescript?', () => {
       getName(): string;
     }
 
+    // ED Q: Why is the PersonModel needed?
+
     class Person implements PersonModel {
       name!: string; // This needs tome lookign at as to why this works: https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
       // https://stackoverflow.com/questions/37791947/how-to-define-a-private-property-when-implementing-an-interface-in-typescript
@@ -270,50 +272,63 @@ describe('What is typescript?', () => {
     expect(person.getName()).toEqual('Kay');
   });
 
-  // it("has interfaces 2", () => {
-  //   // This is a little trickier.
-  //
-  //   interface Equatable {
-  //     equals(other: Equatable): boolean;
-  //   }
-  //
-  //   class Cat implements Equatable {
-  //     // Note that instance variables need to be defined in the class in order
-  //     // to let you access them using `this.variable`. Like this:
-  //     name: string;
-  //
-  //     constructor(name: string) {
-  //       this.name = name;
-  //     }
-  //   }
-  //
-  //   class Dog implements Equatable {
-  //     // ...
-  //   }
+  it('has interfaces 2', () => {
+    // This is a little trickier.
 
-  //   let moggy = new Cat("Moggy");
-  //   let moggy2 = new Cat("Moggy");
-  //   let felix = new Cat("Felix");
-  //   let felixTheDog = new Dog("Felix");
-  //
-  //   // Equatable objects should be equal to other objects if:
-  //   //   - They are the same class (you can test this using `instanceof`)
-  //   //     AND
-  //   //   - They have the same name
-  //   // Otherwise they are not equal.
-  //
-  //   // Cats are equal to other cats with the same name
-  //   expect(moggy.equals(moggy2)).toBeTruthy();
-  //   expect(moggy2.equals(moggy)).toBeTruthy();
-  //
-  //   // Cats aren't equal to other cats with different names
-  //   expect(moggy.equals(felix)).toBeFalsy();
-  //   expect(felix.equals(moggy)).toBeFalsy();
-  //
-  //   // Cats aren't equal to dogs with the same name
-  //   expect(felix.equals(felixTheDog)).toBeFalsy();
-  //   expect(felixTheDog.equals(felix)).toBeFalsy();
-  // });
+    interface Equatable {
+      equals(other: Equatable): boolean;
+      name: string;
+    }
+
+    class Cat implements Equatable {
+      // Note that instance variables need to be defined in the class in order
+      // to let you access them using `this.variable`. Like this:
+      name: string;
+
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      equals(other: Equatable): boolean {
+        return this.name === other.name && other instanceof Cat;
+      }
+    }
+
+    class Dog implements Equatable {
+      name: string;
+
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      equals(other: Equatable): boolean {
+        return this.name === other.name && other instanceof Dog;
+      }
+    }
+
+    let moggy = new Cat('Moggy');
+    let moggy2 = new Cat('Moggy');
+    let felix = new Cat('Felix');
+    let felixTheDog = new Dog('Felix');
+
+    // Equatable objects should be equal to other objects if:
+    //   - They are the same class (you can test this using `instanceof`)
+    //     AND
+    //   - They have the same name
+    // Otherwise they are not equal.
+
+    // Cats are equal to other cats with the same name
+    expect(moggy.equals(moggy2)).toBeTruthy();
+    expect(moggy2.equals(moggy)).toBeTruthy();
+
+    // Cats aren't equal to other cats with different names
+    expect(moggy.equals(felix)).toBeFalsy();
+    expect(felix.equals(moggy)).toBeFalsy();
+
+    // Cats aren't equal to dogs with the same name
+    expect(felix.equals(felixTheDog)).toBeFalsy();
+    expect(felixTheDog.equals(felix)).toBeFalsy();
+  });
 
   /*
     Congrats! Move onto the next part of the project.
