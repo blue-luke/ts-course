@@ -248,19 +248,19 @@ describe('What is typescript?', () => {
 
   it('has interfaces 1', () => {
     interface PersonModel {
-      // _name: string;
       setName(name: string): void;
       getName(): string;
     }
 
     class Person implements PersonModel {
-      private name!: any; // This needs tome lookign at as to why this works: https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
+      name!: string; // This needs tome lookign at as to why this works: https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
+      // https://stackoverflow.com/questions/37791947/how-to-define-a-private-property-when-implementing-an-interface-in-typescript
 
-      setName(name: string) {
+      setName(name: string): void {
         this.name = name;
       }
 
-      getName(): string {
+      getName() {
         return this.name;
       }
     }
