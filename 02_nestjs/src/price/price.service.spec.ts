@@ -41,7 +41,7 @@ describe('PriceService', () => {
     };
 
     jest.spyOn(httpService, 'get').mockImplementation(() => of(fakeResponse));
-    let response = await service.getPrice('BTC,ETH,XRP', 'USD,GBP');
+    const response = await service.getPrice('BTC,ETH,XRP', 'USD,GBP');
     expect(response).toEqual({
       prices: {
         BTC: { USD: 20, GBP: 15 },
@@ -54,7 +54,7 @@ describe('PriceService', () => {
       {
         params: {
           apiKey: '1234',
-          fsym: 'BTC,ETH,XRP',
+          fsyms: 'BTC,ETH,XRP',
           tsyms: 'USD,GBP',
         },
       },

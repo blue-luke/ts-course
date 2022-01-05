@@ -13,7 +13,7 @@ describe('PriceController', () => {
       .overrideProvider(PriceService)
       .useValue({
         getPrice: async () => {
-          return 44.44;
+          return { prices: { BTC: { GBP: 34403.6 }, ETH: { GBP: 2818.38 } } };
         },
       })
       .compile();
@@ -22,7 +22,9 @@ describe('PriceController', () => {
   });
 
   it('returns price for pairing', async () => {
-    let response = await controller.get('BTC', 'USD');
-    expect(response).toEqual({ price: 44.44 });
+    const response = await controller.get('BTC', 'USD');
+    expect(response).toEqual({
+      prices: { BTC: { GBP: 34403.6 }, ETH: { GBP: 2818.38 } },
+    });
   });
 });

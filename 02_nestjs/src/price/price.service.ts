@@ -16,19 +16,26 @@ export class PriceService {
     from: string,
     to: string,
   ): Promise<{ prices: { [key: string]: number } }> {
-    // let JSON
-    let prices = await this.request<{ [key: string]: number }>( // this is what the request should be returning
+    // let JSO
+
+    console.log('again, from', from);
+    console.log('again, to', to);
+
+    const prices = await this.request<{ [key: string]: number }>( // this is what the request should be returning
       // Param 1
       PriceService.API_ROOT,
       // Param 2
       {
         params: {
           apiKey: this.configService.get<string>('CRYPTOCOMPARE_API_KEY'),
-          fsym: from,
+          fsyms: from,
           tsyms: to,
         },
       },
     );
+
+    console.log('prices', prices);
+
     // console.log(json); // {
     //   USD: 44.44;
     // }
@@ -42,7 +49,8 @@ export class PriceService {
     url: string,
     params: { [key: string]: any },
   ): Promise<T> {
-    let request = this.http
+    console.log('running request');
+    const request = this.http
       .get(url, params)
       .pipe(map((response) => response.data));
 
@@ -51,7 +59,7 @@ export class PriceService {
     //     operator: [Function (anonymous)]
     //   }
 
-    console.log(lastValueFrom(request));
+    // console.log(lastValueFrom(request));
 
     return lastValueFrom(request);
   }
