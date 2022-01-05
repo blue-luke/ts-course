@@ -42,7 +42,13 @@ describe('PriceService', () => {
 
     jest.spyOn(httpService, 'get').mockImplementation(() => of(fakeResponse));
     let response = await service.getPrice('BTC,ETH,XRP', 'USD,GBP');
-    // expect(response).toEqual(44.44);
+    expect(response).toEqual({
+      prices: {
+        BTC: { USD: 20, GBP: 15 },
+        ETH: { USD: 10, GBP: 8 },
+        XRP: { USD: 5, GBP: 4 },
+      },
+    });
     expect(httpService.get).toHaveBeenCalledWith(
       'https://min-api.cryptocompare.com/data/pricemulti',
       {

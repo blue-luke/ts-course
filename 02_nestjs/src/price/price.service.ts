@@ -12,9 +12,12 @@ export class PriceService {
     private http: HttpService,
   ) {}
 
-  async getPrice(from: string, to: string): Promise<number> {
+  async getPrice(
+    from: string,
+    to: string,
+  ): Promise<{ prices: { [key: string]: number } }> {
     // let JSON
-    let json = await this.request<{ [key: string]: number }>( // this is what the request should be returning
+    let prices = await this.request<{ [key: string]: number }>( // this is what the request should be returning
       // Param 1
       PriceService.API_ROOT,
       // Param 2
@@ -26,14 +29,13 @@ export class PriceService {
         },
       },
     );
-
     // console.log(json); // {
     //   USD: 44.44;
     // }
 
     //  console.log(json[to]); // 44.44
 
-    return json[to];
+    return { prices };
   }
 
   private async request<T>(
@@ -49,7 +51,7 @@ export class PriceService {
     //     operator: [Function (anonymous)]
     //   }
 
-    console.log(lastValueFrom(request)); // Promise { { USD: 44.44 } }
+    console.log(lastValueFrom(request));
 
     return lastValueFrom(request);
   }
