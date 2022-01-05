@@ -5,10 +5,7 @@ import { PriceService } from './price/price.service';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [
-    HttpModule,
-    ConfigModule.forRoot()
-  ],
+  imports: [HttpModule, ConfigModule.forRoot()],
   controllers: [PriceController],
   providers: [PriceService],
 })

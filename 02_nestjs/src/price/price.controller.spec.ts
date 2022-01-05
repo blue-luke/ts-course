@@ -14,7 +14,7 @@ describe('PriceController', () => {
       .useValue({
         getPrice: async () => {
           return 44.44;
-        }
+        },
       })
       .compile();
 

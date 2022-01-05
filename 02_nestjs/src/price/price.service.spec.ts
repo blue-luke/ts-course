@@ -25,22 +25,36 @@ describe('PriceService', () => {
       headers: {},
       config: {},
       data: {
-        USD: 44.44,
+        BTC: {
+          USD: 20,
+          GBP: 15,
+        },
+        ETH: {
+          USD: 10,
+          GBP: 8,
+        },
+        XRP: {
+          USD: 5,
+          GBP: 4,
+        },
       },
     };
 
     jest.spyOn(httpService, 'get').mockImplementation(() => of(fakeResponse));
-    let response = await service.getPrice('BTC', 'USD');
-    expect(response).toEqual(44.44);
+    let response = await service.getPrice('BTC,ETH,XRP', 'USD,GBP');
+    // expect(response).toEqual(44.44);
     expect(httpService.get).toHaveBeenCalledWith(
-      'https://min-api.cryptocompare.com/data/price',
+      'https://min-api.cryptocompare.com/data/pricemulti',
       {
         params: {
-          apiKey: "1234",
-          fsym: 'BTC',
-          tsyms: 'USD',
+          apiKey: '1234',
+          fsym: 'BTC,ETH,XRP',
+          tsyms: 'USD,GBP',
         },
       },
     );
   });
 });
+
+// https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,GBP
+// {"BTC":{"USD":46197.84,"GBP":34121.87},"ETH":{"USD":3788.53,"GBP":2798.5},"XRP":{"USD":0.8258,"GBP":0.6108}}
