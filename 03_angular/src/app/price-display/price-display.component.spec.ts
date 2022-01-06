@@ -32,15 +32,13 @@ describe('PriceDisplayComponent', () => {
 
   it('sets price when loaded', () => {
     let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice']);
-    priceServiceMock.getPrice.and.returnValue(
-      of({ prices: { BTC: { USD: 42587.69 } } })
-    );
+    priceServiceMock.getPrice.and.returnValue(of({ BTC: { USD: 42587.69 } }));
     TestBed.overrideProvider(PriceService, { useValue: priceServiceMock });
 
     fixture = TestBed.createComponent(PriceDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(component.prices).toBe({ BTC: { USD: 42587.69 } });
+    expect(component.prices).toEqual({ BTC: { USD: 42587.69 } });
   });
 });
