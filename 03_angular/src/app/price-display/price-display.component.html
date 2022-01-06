@@ -1,2 +1,40 @@
-<div *ngIf="loading">Loading...</div>
-<p *ngIf="!loading">Price of {{from}} in {{to}} is {{price}}.</p>
+<section class="price-component">
+  <div class="price-form-container">
+    <h1>Enter your currencies:</h1>
+
+    <form>
+      <div>
+        <label for="fromCurrency">From:</label>
+        <input
+          type="text"
+          name="fromCurrency"
+          id="currency-one"
+          placeholder="BTC,ETH,ADA"
+        />
+        <label for="toCurrency">To:</label>
+        <input
+          type="text"
+          name="toCurrency"
+          id="currency-two"
+          placeholder="EUR,GBP,USD"
+        />
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <h2>Your current conversion:</h2>
+    <div class="price-container">
+      <div class="price-item">
+        <h4>From:</h4>
+        <p id="from-price">BTC,ETH,ADA</p>
+      </div>
+      <div class="price-item">
+        <h4>To:</h4>
+        <p id="to-price">EUR,GBP,USD</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading">Loading...</div>
+  <p *ngIf="!loading">Price of {{ from }} in {{ to }} is {{ prices }}.</p>
+</section>

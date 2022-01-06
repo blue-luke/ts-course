@@ -16,7 +16,6 @@ export class PriceService {
       .get(`${PriceService.API_URL}/price?from=${from}&to=${to}`)
       .pipe(
         map((res: any) => {
-          console.log(res);
           return res['prices'];
         })
       );
