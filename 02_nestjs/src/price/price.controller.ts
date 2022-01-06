@@ -12,8 +12,7 @@ export class PriceController {
   ): Promise<{ prices: { [key: string]: number } }> {
     //TODO: why are we returning a promise here ? isn't this what we expose to the outside
     const prices = await this.priceService.getPrice(from, to);
-    console.log('eeeee:', prices);
-    return prices;
+    return prices; // last line before exposed to front end
   }
 }
 

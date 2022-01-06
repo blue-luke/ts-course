@@ -11,26 +11,28 @@ get started with the Typescript, unless you know it already.
 After this, work on the project below.
 
 > # Real-time Crypto Prices using NestJS and Angular
-> 
+>
 > Task: Create a client/server that provides a real time price stream for the
 > following coins [BTC,ETH,XRP,LTC,BCH,ETC] and their value in the following
 > currencies [USD,GBP,EUR,JPY,ZAR].
-> 
+>
 > The project must be hosted on Github or Gitlab and CryptoCompare must be used
 > as the data source.
-> 
+>
 > Requirements:
-> * Server: NestJS
-> * Client: Angular
-> * Testing
+>
+> - Server: NestJS
+> - Client: Angular
+> - Testing
 >
 > Nice to haves:
-> * History
-> * Filters
-> * WebSockets
+>
+> - History
+> - Filters
+> - WebSockets
 
 There is a seed codebase in `02_nestjs` and `03_angular` to get you started and
-videos talking through the key points of the codebase
+videos x through the key points of the codebase
 [here](#introduction--walkthrough-video).
 
 ## Seed Project Setup
@@ -103,3 +105,52 @@ in with your coach if you are unsure.
   - [ ] Angular Routing
   - [ ] CSS in Angular
 
+<!-- Ed Plan -->
+
+2x comma delim fields for To and From,
+1x Button for "Save & Fetch"
+
+On Click
+
+- Save fields in memory (a class?)
+- Field Validation added
+- HTTP GET to back end with /prices?to=bla,blabla&from=bladybladyblady
+- Kick of recurring process every 10 seconds to check updated fields + fetch prices with updated fields
+
+Backend will fetch To and From and push them into the url.
+
+Requests to cryptocompare
+
+Returns values to the front end as is.
+
+Front end displays on screen in a table of
+
+## |From||
+
+|1 BTC| x Eth|
+|1 BTC| x ada|
+|1 BTC| x monero|
+
+-- Prices to be updated every 30 seconds.
+
+to add if time (below + filtering)
+
+### Nice to have:
+
+Tickboxes on the front end for currencies.
+
+From
+
+- BTC
+- ETH
+- BTC
+
+Another tickbox for to:
+
+To
+
+- GBP
+- EUR
+- JPY
+
+When each box is ticked, their values are added

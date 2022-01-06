@@ -9,18 +9,21 @@ describe('PriceDisplayComponent', () => {
   let component: PriceDisplayComponent;
   let fixture: ComponentFixture<PriceDisplayComponent>;
 
+  // we load a m
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PriceDisplayComponent ]
+      declarations: [PriceDisplayComponent],
     }).compileComponents();
   });
 
+  // gfergerg
   it('flags as loading at first', () => {
-    let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice'])
+    let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice']);
     priceServiceMock.getPrice.and.returnValue(new Observable<number>());
     TestBed.overrideProvider(PriceService, { useValue: priceServiceMock });
 
     fixture = TestBed.createComponent(PriceDisplayComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
 
@@ -28,14 +31,16 @@ describe('PriceDisplayComponent', () => {
   });
 
   it('sets price when loaded', () => {
-    let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice'])
-    priceServiceMock.getPrice.and.returnValue(of(44.44));
+    let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice']);
+    priceServiceMock.getPrice.and.returnValue(
+      of({ prices: { BTC: { USD: 42587.69 } } })
+    );
     TestBed.overrideProvider(PriceService, { useValue: priceServiceMock });
 
     fixture = TestBed.createComponent(PriceDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(component.price).toBe(44.44);
-  })
+    expect(component.prices).toBe({ BTC: { USD: 42587.69 } });
+  });
 });
