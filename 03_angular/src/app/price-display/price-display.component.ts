@@ -19,6 +19,7 @@ export class PriceDisplayComponent implements OnInit {
 
   loadPriceData() {
     this.priceService.getPrice(this.from, this.to).subscribe((price) => {
+      console.log(price);
       this.prices = price;
     });
   }
