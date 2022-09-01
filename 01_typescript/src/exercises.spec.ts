@@ -134,14 +134,14 @@ describe("What is typescript?", () => {
     expect(sum([1, 2, 3])).toEqual(6);
   });
 
-  // it("adds type annotations 5", () => {
-  //   function greetFancy(person) {
-  //     return `Greetings, ${person.name} of ${person.origin}.`
-  //   }
-  //
-  //   expect(greetFancy({ name: "Frodo", origin: "The Shire"}))
-  //     .toEqual("Greetings, Frodo of The Shire");
-  // });
+  it("adds type annotations 5", () => {
+    function greetFancy(person: {name: string, origin: string}) {
+      return `Greetings, ${person.name} of ${person.origin}`
+    }
+  
+    expect(greetFancy({ name: "Frodo", origin: "The Shire"}))
+      .toEqual("Greetings, Frodo of The Shire");
+  });
 
   /*
     Here's an interesting question — in the above examples, how does Typescript
