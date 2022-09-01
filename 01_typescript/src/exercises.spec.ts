@@ -198,17 +198,21 @@ describe("What is typescript?", () => {
     Crucially, all of the `T`s have to be the same — if you give it a `string[]`
     you're going to get a `string` back, not a `number`.
 
+    // RETURN TO - Not sure what the above line means. Does it just mean that a string array will only return a string, and a number array will only return a number?
+
     Uncomment this test and make it pass.
   */
 
-  // it("adds type annotations 7", () => {
-  //   function flatten(lists: number[][]): number[] {
-  //     return lists.reduce((a, b) => [...a, ...b]);
-  //   }
-  //
-  //   expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
-  //   expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-  // });
+  it("adds type annotations 7", () => {
+    function flatten<Type>(lists: Type[][]): Type[] {
+      return lists.reduce((a, b) => [...a, ...b]);
+    }
+  
+    expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  });
+
+
 
   /*
     Finally, we can also describe the types of classes and functions in
