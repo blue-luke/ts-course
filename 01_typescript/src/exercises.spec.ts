@@ -255,11 +255,6 @@ describe("What is typescript?", () => {
       setName(name: string): void;
       getName(): string;
     }
-
-    interface PersonModel {
-      setName(name:string): void;
-      getName(): string;
-    }
   
     class Person implements PersonModel {
       name: string; 
