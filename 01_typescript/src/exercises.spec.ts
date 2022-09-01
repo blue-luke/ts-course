@@ -203,6 +203,16 @@ describe("What is typescript?", () => {
     Uncomment this test and make it pass.
   */
 
+
+  // it("adds type annotations 7", () => {
+  //   function flatten(lists: number[][]): number[] {
+  //     return lists.reduce((a, b) => [...a, ...b]);
+  //   }
+  //
+  //   expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
+  //   expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  // });
+
   it("adds type annotations 7", () => {
     function flatten<Type>(lists: Type[][]): Type[] {
       return lists.reduce((a, b) => [...a, ...b]);
@@ -212,7 +222,7 @@ describe("What is typescript?", () => {
     expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
   });
 
-
+  // Solution was to just replace number with Type, but also adding in <Type>. But this is unclear atm. The first type must mean something different to the second
 
   /*
     Finally, we can also describe the types of classes and functions in
