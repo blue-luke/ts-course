@@ -85,13 +85,13 @@ describe("What is typescript?", () => {
     expect(greet("Kay")).toEqual("Hello, Kay!");
   });
 
-  // it("adds type annotations 2", () => {
-  //   function power(num, exp) {
-  //     return num ** exp;
-  //   }
-  //
-  //   expect(power(2, 8)).toEqual(256);
-  // });
+  it("adds type annotations 2", () => {
+    function power(num: number, exp: number) {
+      return num ** exp;
+    }
+  
+    expect(power(2, 8)).toEqual(256);
+  });
 
   // it("adds type annotations 3", () => {
   //   function and(a, b) {
