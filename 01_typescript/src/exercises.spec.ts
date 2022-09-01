@@ -126,13 +126,13 @@ describe("What is typescript?", () => {
     Uncomment the following tests and make them pass.
   */
 
-  // it("adds type annotations 4", () => {
-  //   function sum(list) {
-  //     return list.reduce((a, b) => a + b);
-  //   }
-  //
-  //   expect(sum([1, 2, 3])).toEqual(6);
-  // });
+  it("adds type annotations 4", () => {
+    function sum(list: number[]) {
+      return list.reduce((a, b) => a + b);
+    }
+  
+    expect(sum([1, 2, 3])).toEqual(6);
+  });
 
   // it("adds type annotations 5", () => {
   //   function greetFancy(person) {
