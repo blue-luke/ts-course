@@ -8,6 +8,9 @@ projects that use Typescript, NestJS, and Angular.
 Next, you may work through the [`01_typescript/`](01_typescript) directory to
 get started with the Typescript, unless you know it already.
 
+Much will be confusing for months, like k8s experience
+We'll start with an existing project, many files. The reflects how devs encounter codebases in industry, ie rarely from scratch
+
 After this, work on the project below.
 
 > # Real-time Crypto Prices using NestJS and Angular
@@ -20,9 +23,21 @@ After this, work on the project below.
 > as the data source.
 > 
 > Requirements:
-> * Server: NestJS
-> * Client: Angular
+> * Server: NestJS, backend, in ts, like sinatra, node.js
+> * Client: Angular, frontend in ts, like react, vue
 > * Testing
+
+The browser messages the angualr frontend. It returns stuff from the nestjs backend, but packaged well. We can interrogate the backend directly, if we have the correct permissions. This is using the API. But all we'll get is json files in return.
+
+Our nest.js backend, in this tutorial, gets its prices from crypto.com
+
+The API .env file is for the crypto API key
+
+We use a backend to, 1, keep the API from the frontend ie from the public and, 2, to enable us to use nest.js, as we're learning
+
+(node is a js runtime. It enables ts, nest, angular)
+npm is node package manager
+
 >
 > Nice to haves:
 > * History
