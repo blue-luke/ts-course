@@ -157,13 +157,15 @@ describe("What is typescript?", () => {
     Uncomment the following test and make it pass.
   */
 
-  // it("adds type annotations 6", () => {
-  //   function greet(name: string): number {
-  //     return `Hello ${name}`;
-  //   }
-  //
-  //   expect(greet("Kay")).toEqual("Hello Kay");
-  // })
+    // Below, you annotate the return value of your functions by using func(): RETURN TYPE
+
+  it("adds type annotations 6", () => {
+    function greet(name: string): string {
+      return `Hello ${name}`;
+    }
+  
+    expect(greet("Kay")).toEqual("Hello Kay");
+  })
 
   /*
     What if you want to write a function where you don't know the type? For
