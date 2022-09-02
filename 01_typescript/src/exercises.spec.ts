@@ -255,6 +255,13 @@ describe("What is typescript?", () => {
       setName(name: string): void;
       getName(): string;
     }
+
+    // Return to - What does the interface accomplish? Its contents are duplicated in the class.
+    // If I remove the interface, this class still works and is still type safe
+    // But if I change the interface, it will throw errors that I have to fix
+    // In all of the classes that implement the interface
+    // This is the point of ts? Type validation at dev stages so prod code is more reliable
+    // Best to not think of them as errors/failures. Think of them as valuable feedback
   
     class Person implements PersonModel {
       name: string; 
@@ -276,50 +283,62 @@ describe("What is typescript?", () => {
     expect(person.getName()).toEqual("Kay");
   });
 
-  // it("has interfaces 2", () => {
-  //   // This is a little trickier.
-  //
-  //   interface Equatable {
-  //     equals(other: Equatable): boolean;
-  //   }
-  //
-  //   class Cat implements Equatable {
-  //     // Note that instance variables need to be defined in the class in order
-  //     // to let you access them using `this.variable`. Like this:
-  //     name: string;
-  //
-  //     constructor(name: string) {
-  //       this.name = name;
-  //     }
-  //   }
-  //
-  //   class Dog implements Equatable {
-  //     // ...
-  //   }
+  it("has interfaces 2", () => {
+    // This is a little trickier.
+  
+    interface Equatable {
+      equals(other: Equatable): boolean;
+    }
+  
+    class Cat implements Equatable {
+      // Note that instance variables need to be defined in the class in order
+      // to let you access them using `this.variable`. Like this:
+      name: string;
+  
+      constructor(name: string) {
+        this.name = name;
+      }
 
-  //   let moggy = new Cat("Moggy");
-  //   let moggy2 = new Cat("Moggy");
-  //   let felix = new Cat("Felix");
-  //   let felixTheDog = new Dog("Felix");
-  //
-  //   // Equatable objects should be equal to other objects if:
-  //   //   - They are the same class (you can test this using `instanceof`)
-  //   //     AND
-  //   //   - They have the same name
-  //   // Otherwise they are not equal.
-  //
-  //   // Cats are equal to other cats with the same name
-  //   expect(moggy.equals(moggy2)).toBeTruthy();
-  //   expect(moggy2.equals(moggy)).toBeTruthy();
-  //
+      equals(other: Equatable): boolean {
+        return (other instanceof Cat) && (this.name == other.name)
+      }
+    }
+  
+    class Dog implements Equatable {
+      name: string;
+  
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      equals(other: Equatable): boolean {
+        return (other instanceof Dog) && (this.name == other.name)
+      }
+    }
+
+    let moggy = new Cat("Moggy");
+    let moggy2 = new Cat("Moggy");
+    let felix = new Cat("Felix");
+    let felixTheDog = new Dog("Felix");
+  
+    // Equatable objects should be equal to other objects if:
+    //   - They are the same class (you can test this using `instanceof`)
+    //     AND
+    //   - They have the same name
+    // Otherwise they are not equal.
+  
+    // Cats are equal to other cats with the same name
+    expect(moggy.equals(moggy2)).toBeTruthy();
+    expect(moggy2.equals(moggy)).toBeTruthy();
+  
   //   // Cats aren't equal to other cats with different names
-  //   expect(moggy.equals(felix)).toBeFalsy();
-  //   expect(felix.equals(moggy)).toBeFalsy();
-  //
+    expect(moggy.equals(felix)).toBeFalsy();
+    expect(felix.equals(moggy)).toBeFalsy();
+  
   //   // Cats aren't equal to dogs with the same name
-  //   expect(felix.equals(felixTheDog)).toBeFalsy();
-  //   expect(felixTheDog.equals(felix)).toBeFalsy();
-  // });
+    expect(felix.equals(felixTheDog)).toBeFalsy();
+    expect(felixTheDog.equals(felix)).toBeFalsy();
+  });
 
   /*
     Congrats! Move onto the next part of the project.
