@@ -223,6 +223,8 @@ describe("What is typescript?", () => {
   });
 
   // Solution was to just replace number with Type, but also adding in <Type>. But this is unclear atm. The first type must mean something different to the second
+  // This is now clear. <T> tells typescript that the type is not defined in advance, but by the usage of the function. We set up a variable
+  //  T[] means to return a type list. T[][] means to return a type list list
 
   /*
     Finally, we can also describe the types of classes and functions in
