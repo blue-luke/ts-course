@@ -88,6 +88,30 @@ in with your coach if you are unsure.
 
 <!-- Perhaps best to focus on the nest/backend, neglecting frontend altogether? Is it even possible for frontend code to impact the infrastructure? Presumably, yes, but all bugs I've seen so far have been backend. I could return to angular/frontend in December, one main PD courses are done, to have something pretty and relaxing to do over the holidays -->
 
+
+Investigate the code at the moment. What does it do and how does it do that?
+Structure and roles:
+- Frontend, one line per pair, with a button. Start with BTC in USD
+- Each line formats the json object returned. The button fetches the json object. Currently done automatically on page refresh
+- Backend, provides the json object. Perhaps modifying it
+- Could store this information in a database
+- Backend, also gets the raw data from the API
+
+Possible user stories to implement
+- Display a range of currency pairs
+- Have drop downs to allow selection of pairs
+- Provide time stamps
+- Allow access to historical information
+- Allow login, personal selection of pairs
+- Store historical data in a database
+
+Infrastructure things to implement
+- Using terraform to check in infrastructure. GitOps
+- Storage of API secret in cluster, using sealed secret operator
+- Deployment of a crd, including operator, to maintain deployment in desired state
+- Implementation of pubsub for deployment communication
+- Implementation of a database for storage of account information
+
 - [ ] Javascript
   - [ ] Functions
   - [ ] Classes
