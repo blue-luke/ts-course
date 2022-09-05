@@ -86,6 +86,8 @@ There are a lot of things here and there's no expectation you learn all of this
 in any period of time. The key thing is to stay focused and make progress. Check
 in with your coach if you are unsure.
 
+<!-- Perhaps best to focus on the nest/backend, neglecting frontend altogether? Is it even possible for frontend code to impact the infrastructure? Presumably, yes, but all bugs I've seen so far have been backend. I could return to angular/frontend in December, one main PD courses are done, to have something pretty and relaxing to do over the holidays -->
+
 - [ ] Javascript
   - [ ] Functions
   - [ ] Classes
