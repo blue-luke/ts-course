@@ -14,6 +14,7 @@ export class PriceService {
       PriceService.API_ROOT, {
         params: {
           apiKey: this.configService.get<string>('CRYPTOCOMPARE_API_KEY'),
+          // I don't have an api key, so how am I getting values? Is the BTC value accessible without the key?
           fsym: from,
           tsyms: to,
         }
@@ -23,6 +24,7 @@ export class PriceService {
 
   private async request<T>(url: string, params: { [key: string]: any }): Promise<T> {
     let request = this.http.get(url, params).pipe(map(response => response.data));
+    // What is lastValueFrom?
     return lastValueFrom(request);
   }
 }

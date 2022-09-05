@@ -109,10 +109,23 @@ Backend features:
 
 Infrastructure features:
 - Using terraform to check in infrastructure. GitOps
+- Ingress
+- Implement grafana
+- Assorted probes
 - Storage of API secret in cluster, using sealed secret operator
-- Deployment of a crd, including operator, to maintain deployment in desired state
+- Deployment of a crd, including operator, to maintain deployment in desired state 
+- OR deployment using helm charts. I think this accomplishes the same as the template operator
 - Implementation of pubsub for deployment communication
 - Implementation of a database for storage of account information
+- NetworkPolicy
+- Other k8s stuff, eg secrets, configmaps, volumes
+- Sidecar, initcontainers
+- R/G and canary deployments
+- Upgrading a node/k8sversion/draining a node, etc
+- Hack own cluster/mess around with capabilities, usergroups
+
+Chaos monkey ideas
+- Write a script that randomly changes code and pushes it straight to the cluster? Practice debugging
 
 - [ ] Javascript
   - [ ] Functions

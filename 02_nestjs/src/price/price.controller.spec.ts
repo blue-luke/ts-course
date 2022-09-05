@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PriceController } from './price.controller';
 import { PriceService } from './price.service';
 
+// What is a controller? Like Ruby on Rails? 
+
 describe('PriceController', () => {
   let controller: PriceController;
 
@@ -14,6 +16,7 @@ describe('PriceController', () => {
       .useValue({
         getPrice: async () => {
           return 44.44;
+          // Thsese are tests, setting up dummy values and checking behaviour
         }
       })
       .compile();

@@ -13,3 +13,5 @@ import { ConfigModule } from '@nestjs/config';
   providers: [PriceService],
 })
 export class AppModule {}
+
+// This is the master app? Looks similar to the react backend, Acebook?

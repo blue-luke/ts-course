@@ -20,6 +20,7 @@ describe('PriceService', () => {
 
   it('returns price for pairing', async () => {
     const fakeResponse = {
+      // Dummy json response here, which nonetheless indicates nature of actual response
       status: 200,
       statusText: 'OK',
       headers: {},
