@@ -1,0 +1,5 @@
+Get an app up and running - angular (frontend) or nest (backend)
+Add in a dockerfile
+Build the image and put it in an image registry (manual)
+Put a step in the pipeline that builds the image and puts it in the registry
+Change the location of the image that is pulled by the deployment
