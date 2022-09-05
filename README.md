@@ -97,15 +97,17 @@ Structure and roles:
 - Could store this information in a database
 - Backend, also gets the raw data from the API
 
-Possible user stories to implement
+Frontend features:
 - Display a range of currency pairs
 - Have drop downs to allow selection of pairs
 - Provide time stamps
-- Allow access to historical information
 - Allow login, personal selection of pairs
-- Store historical data in a database
 
-Infrastructure things to implement
+Backend features:
+- Store historical data in a database
+- Store account information in a cluster
+
+Infrastructure features:
 - Using terraform to check in infrastructure. GitOps
 - Storage of API secret in cluster, using sealed secret operator
 - Deployment of a crd, including operator, to maintain deployment in desired state
